@@ -10,12 +10,12 @@ class ContenedorFirebase {
       const querySnapshot = await this.query.get();
       let docs = querySnapshot.docs;
 
-      const response = docs.map((doc) => ({
+      const elements = docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
 
-      return response;
+      return elements;
     } catch (error) {
       return error;
     }
@@ -24,8 +24,8 @@ class ContenedorFirebase {
   async save(element) {
     try {
       const doc = this.query.doc();
-      let response = await doc.create(element);
-      console.log(response);
+      await doc.create(element);
+      return doc.id;
     } catch (error) {
       return error;
     }
@@ -33,7 +33,7 @@ class ContenedorFirebase {
 
   async getById(id) {
     try {
-      const doc = this.query.doc(id);
+      const doc = this.query.doc(`${id}`);
       const element = await doc.get();
       return element.data();
     } catch (error) {
@@ -43,8 +43,8 @@ class ContenedorFirebase {
 
   async updateById(id, newData) {
     try {
-      const doc = this.query.doc(id);
-      await doc.update({ newData });
+      const doc = this.query.doc(`${id}`);
+      await doc.update(newData);
       return this.getById(id);
     } catch (error) {
       return error;
@@ -53,7 +53,7 @@ class ContenedorFirebase {
 
   async deleteById(id) {
     try {
-      const doc = this.query.doc(id);
+      const doc = this.query.doc(`${id}`);
       await doc.delete();
     } catch (error) {
       return error;
