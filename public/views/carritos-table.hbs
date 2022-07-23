@@ -1,0 +1,47 @@
+<div class="container m-5">
+    <div class="mt-5">
+        <div class="table-responsive mt- rounded-lg">
+            <h4 class="text-danger">Mi Carrito:</h4>
+            {{#if cart}}
+            <table class="table table-dark rounded-lg">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Producto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>{{this.id}}</th>
+                        {{#if this.products.length}}
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Foto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each this.products }}
+                            <tr>
+                                <td>{{this.nombre}}</td>
+                                <td>${{this.precio}}</td>
+                                <td>{{this.stock}}</td>
+                                <td><img width="48" src={{this.foto}} alt="image"></td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                        
+                        {{else}}
+                        <th>El carrito no posee productos</th>
+                        {{/if}}
+                    </tr>
+                </tbody>
+            </table>
+            {{else}}
+            <h5 class="alert alert-danger">No se encontró ningún carrito válido.</h5>
+            {{/if}}
+        </div>
+    </div>
+</div>

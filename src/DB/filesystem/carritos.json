@@ -1,0 +1,28 @@
+[
+   {
+      "timestamp": "13/7/2022 0:51:01",
+      "products": [
+         {
+            "nombre": "IPHONE 12 128GB Black",
+            "descripcion": "Sistema de dos cámaras de 12 MP: ultra gran angular y gran angular",
+            "codigo": "MGHU3LL",
+            "foto": "https://mundomac.com/wp-content/uploads/2022/03/iPhone12_Black.jpg",
+            "precio": 1269,
+            "stock": 4,
+            "id": 1,
+            "timestamp": "10/7/2022 19:49:03"
+         }
+      ],
+      "id": 1
+   },
+   {
+      "timestamp": "10/7/2022 19:35:56",
+      "products": [],
+      "id": 2
+   },
+   {
+      "timestamp": "10/7/2022 19:36:14",
+      "products": [],
+      "id": 3
+   }
+]

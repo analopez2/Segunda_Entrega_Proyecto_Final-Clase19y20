@@ -1,0 +1,62 @@
+[
+   {
+      "nombre": "Iphone 12 128GB Black",
+      "descripcion": "Sistema de dos cámaras de 12 MP: ultra gran angular y gran angular",
+      "codigo": "MGHU3LL",
+      "foto": "https://mundomac.com/wp-content/uploads/2022/03/iPhone12_Black.jpg",
+      "precio": 1269,
+      "stock": 4,
+      "id": 1,
+      "timestamp": "10/7/2022 19:49:03"
+   },
+   {
+      "nombre": "Iphone 12 128GB Blue",
+      "descripcion": "Sistema de dos cámaras de 12 MP: ultra gran angular y gran angular",
+      "codigo": "MGHX3LL/A",
+      "foto": "https://mundomac.com/wp-content/uploads/2022/04/iPhone12_Blue-600x600.jpg",
+      "precio": 1269,
+      "stock": 1,
+      "id": 2,
+      "timestamp": "12/7/2022 23:48:30"
+   },
+   {
+      "nombre": "iPhone 13 Pro 128GB Graphite",
+      "descripcion": "Sistema de cámaras Pro de 12 MP: teleobjetivo, gran angular y ultra gran angular",
+      "codigo": "MLV93LZ/A",
+      "foto": "https://mundomac.com/wp-content/uploads/2022/03/iPhone13Pro_Graphite-1.jpg",
+      "precio": 1799,
+      "stock": 10,
+      "id": 3,
+      "timestamp": "10/7/2022 20:27:48"
+   },
+   {
+      "nombre": "iPhone SE 128GB",
+      "descripcion": "Cámara de 12 Mpx con gran angular",
+      "codigo": "MMXJ3LZ/A",
+      "foto": "https://mundomac.com/wp-content/uploads/2022/06/iPhoneSE3_Midnight.jpg",
+      "precio": 999,
+      "stock": 1,
+      "id": 4,
+      "timestamp": "10/7/2022 21:56:10"
+   },
+   {
+      "nombre": "iPhone SE 64GB Black",
+      "descripcion": "Sistema de cámara única de 12 MP: gran angular",
+      "codigo": "MHGP3LZ/A",
+      "foto": "https://mundomac.com/wp-content/uploads/2022/03/iPhoneSE_Black.jpg",
+      "precio": 829,
+      "stock": 2,
+      "id": 5,
+      "timestamp": "10/7/2022 22:05:03"
+   },
+   {
+      "nombre": "Iphone 11 64GB Black",
+      "descripcion": "Sistema de dos cámaras de 12 MP: ultra gran angular y gran angular",
+      "codigo": "MHDA3LZ/A",
+      "foto": "https://cdn.shopify.com/s/files/1/0565/6300/7603/products/iPhone11_Black_740x.jpg?v=1657299919",
+      "precio": 899,
+      "stock": 15,
+      "id": 6,
+      "timestamp": "13/7/2022 1:17:11"
+   }
+]
