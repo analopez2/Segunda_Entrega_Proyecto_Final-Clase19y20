@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { FilesystemContainer } from '../Api/FilesystemContainer.js';
-import { config } from '../config/index.js';
-import { ERRORS_UTILS } from '../utils/index.js';
+import { ContenedorArchivo } from '../contenedores/ContenedorArchivo.js';
+import { config } from '../config/config.js';
+import { ERRORS_UTILS } from '../utils/utils.js';
 
 const cartsRouter = Router();
 
-const CartApi = new FilesystemContainer(config.FILESYSTEM_DB.carts);
-const ProductsApi = new FilesystemContainer(config.FILESYSTEM_DB.products);
+const CartApi = new ContenedorArchivo(config.FILESYSTEM_DB.carts);
+const ProductsApi = new ContenedorArchivo(config.FILESYSTEM_DB.products);
 
 const BASE_CART = {
   products: [],

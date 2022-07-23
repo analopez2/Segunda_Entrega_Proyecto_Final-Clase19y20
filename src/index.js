@@ -1,6 +1,6 @@
 import express from 'express';
-import { config } from './config/index.js';
-import { productsRouter, cartsRouter } from './routers/index.js';
+import { config } from './config/config.js';
+import { productsRouter, cartsRouter } from './routers/routers.js';
 
 const app = express();
 

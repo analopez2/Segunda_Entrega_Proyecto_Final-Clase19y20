@@ -1,7 +1,7 @@
 import fs from 'fs';
-import { DATE_UTILS } from '../utils/index.js';
+import { DATE_UTILS } from '../utils/utils.js';
 
-class FilesystemContainer {
+class ContenedorArchivo {
   constructor(filename) {
     this.path = `./src/db/filesystem/${filename}.json`;
   }
@@ -81,9 +81,9 @@ class FilesystemContainer {
 
       return elements[elementIndex];
     } catch (error) {
-      return elements;
+      return error;
     }
   }
 }
 
-export { FilesystemContainer };
+export { ContenedorArchivo };

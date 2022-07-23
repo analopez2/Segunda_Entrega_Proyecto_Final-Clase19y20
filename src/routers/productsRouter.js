@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { FilesystemContainer } from '../Api/FilesystemContainer.js';
-import { config } from '../config/index.js';
-import { isAdmin } from '../middlewares/index.js';
-import { ERRORS_UTILS, JOI_VALIDATOR } from '../utils/index.js';
+import { ContenedorArchivo } from '../contenedores/ContenedorArchivo.js';
+import { config } from '../config/config.js';
+import { isAdmin } from '../middlewares/middlewares.js';
+import { ERRORS_UTILS, JOI_VALIDATOR } from '../utils/utils.js';
 
 const productsRouter = Router();
 
-const ProductApi = new FilesystemContainer(config.FILESYSTEM_DB.products);
+const ProductApi = new ContenedorArchivo(config.FILESYSTEM_DB.products);
 
 productsRouter.get('/', async (req, res) => {
   try {
