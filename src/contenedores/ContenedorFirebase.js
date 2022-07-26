@@ -24,6 +24,8 @@ class ContenedorFirebase {
   async save(element) {
     try {
       const doc = this.query.doc();
+      element.timestamp = DATE_UTILS.getTimestamp();
+
       await doc.create(element);
       return doc.id;
     } catch (error) {
@@ -44,6 +46,8 @@ class ContenedorFirebase {
   async updateById(id, newData) {
     try {
       const doc = this.query.doc(`${id}`);
+      newData.timestamp = DATE_UTILS.getTimestamp();
+
       await doc.update(newData);
       return this.getById(id);
     } catch (error) {

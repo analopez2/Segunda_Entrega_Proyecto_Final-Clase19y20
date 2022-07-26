@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 dotenv.config();
 
 const DEV_PORT = 8080;
