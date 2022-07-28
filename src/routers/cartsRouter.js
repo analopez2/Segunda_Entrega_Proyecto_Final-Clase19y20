@@ -72,9 +72,9 @@ cartsRouter.post('/:id/productos', async (req, res) => {
       throw { error: ERRORS_UTILS.MESSAGES.NO_PRODUCT };
     }
 
-    BASE_CART.productos = cart.productos.push({ ...product });
+    cart.productos = cart.productos.push(product);
 
-    const updatedCart = await CartApi.updateById(id, BASE_CART);
+    const updatedCart = await CartApi.updateById(id, cart);
 
     res.send(updatedCart);
   } catch (error) {

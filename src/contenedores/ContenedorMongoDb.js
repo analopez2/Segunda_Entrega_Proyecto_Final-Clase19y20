@@ -32,8 +32,8 @@ class ContenedorMongoDb {
 
   async getById(id) {
     try {
-      const file = await this.model.find({ id: id });
-      return file[0];
+      const file = await this.model.findOne({ id: id });
+      return file;
     } catch (error) {
       return error;
     }
@@ -41,16 +41,18 @@ class ContenedorMongoDb {
 
   async updateById(id, newData) {
     try {
-      const element = await this.model.find({ id: id });
+      const element = await this.model.findOne({ id: id });
 
       if (!element) return { error: 'Elemento no encontrado' };
 
       newData.id = id;
       newData.timestamp = DATE_UTILS.getTimestamp();
 
-      await this.model.replaceOne({ id: id }, { ...element, ...newData });
-
-      const updatedElement = await this.model.find({ id: id });
+      let updatedElement = await this.model.findOneAndUpdate(
+        { id: id },
+        { ...newData },
+        { new: true },
+      );
 
       return updatedElement;
     } catch (error) {
