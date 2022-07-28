@@ -17,7 +17,7 @@ class ContenedorMongoDb {
 
   async save(element) {
     try {
-      const elements = await this.model.find({}).pretty();
+      const elements = await this.model.find({});
       element.id =
         elements.length === 0 ? 1 : elements[elements.length - 1].id + 1;
       element.timestamp = DATE_UTILS.getTimestamp();
@@ -33,7 +33,7 @@ class ContenedorMongoDb {
   async getById(id) {
     try {
       const file = await this.model.find({ id: id });
-      return JSON.parse(JSON.stringify(file));
+      return file[0];
     } catch (error) {
       return error;
     }
@@ -50,7 +50,9 @@ class ContenedorMongoDb {
 
       await this.model.replaceOne({ id: id }, { ...element, ...newData });
 
-      return await this.model.find({ id: id });
+      const updatedElement = await this.model.find({ id: id });
+
+      return updatedElement;
     } catch (error) {
       return error;
     }

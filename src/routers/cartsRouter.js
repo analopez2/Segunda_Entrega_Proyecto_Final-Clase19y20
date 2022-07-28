@@ -17,7 +17,7 @@ cartsRouter.post('/', async (req, res) => {
     const cartId = cart.id;
     res.send({ id: cartId });
   } catch (error) {
-    res.statusCode(400).send({ error: error });
+    res.statusCode(400).send({ error: error.message });
   }
 });
 
@@ -36,7 +36,7 @@ cartsRouter.delete('/:id', async (req, res) => {
       carritoEliminado: carritoDelete,
     });
   } catch (error) {
-    res.statusCode(404).send({ error: error });
+    res.statusCode(404).send({ error: error.message });
   }
 });
 
@@ -51,7 +51,7 @@ cartsRouter.get('/:id/productos', async (req, res) => {
 
     res.send(cart.productos);
   } catch (error) {
-    res.statusCode(404).send({ error: error });
+    res.statusCode(404).send({ error: error.message });
   }
 });
 
@@ -72,9 +72,9 @@ cartsRouter.post('/:id/productos', async (req, res) => {
       throw { error: ERRORS_UTILS.MESSAGES.NO_PRODUCT };
     }
 
-    cart.productos.push(product);
+    BASE_CART.productos = cart.productos.push({ ...product });
 
-    const updatedCart = await CartApi.updateById(id, cart);
+    const updatedCart = await CartApi.updateById(id, BASE_CART);
 
     res.send(updatedCart);
   } catch (error) {
@@ -105,7 +105,7 @@ cartsRouter.delete('/:id/productos/:id_prod', async (req, res) => {
 
     res.send(updatedCart);
   } catch (error) {
-    res.statusCode(404).send({ error: error });
+    res.statusCode(404).send({ error: error.message });
   }
 });
 
