@@ -27,7 +27,7 @@ class ContenedorFirebase {
       element.timestamp = DATE_UTILS.getTimestamp();
 
       await doc.create(element);
-      return doc.id;
+      return { message: 'Elemento guardado', id: doc.id };
     } catch (error) {
       return error;
     }

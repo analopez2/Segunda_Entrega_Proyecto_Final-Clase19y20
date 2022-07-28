@@ -72,13 +72,13 @@ cartsRouter.post('/:id/productos', async (req, res) => {
       throw { error: ERRORS_UTILS.MESSAGES.NO_PRODUCT };
     }
 
-    cart.productos = cart.productos.push(product);
+    cart.productos.push(product);
 
     const updatedCart = await CartApi.updateById(id, cart);
 
     res.send(updatedCart);
   } catch (error) {
-    res.statusCode(404).send({ error: error.message });
+    res.send({ error: error.message });
   }
 });
 
