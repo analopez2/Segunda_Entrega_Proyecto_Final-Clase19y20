@@ -78,7 +78,7 @@ cartsRouter.post('/:id/productos', async (req, res) => {
 
     res.send(updatedCart);
   } catch (error) {
-    res.send({ error: error.message });
+    res.statusCode(404).send({ error: error.message });
   }
 });
 
