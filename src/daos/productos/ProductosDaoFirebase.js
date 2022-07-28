@@ -1,5 +1,5 @@
 import { ContenedorFirebase } from '../../contenedores/ContenedorFirebase.js';
-import { dbFirebase } from '../../config/firebase.js';
+import { dbFirebase } from '../../DB/firebase/firebase.js';
 
 class ProductosDaoFirebase extends ContenedorFirebase {
   constructor() {

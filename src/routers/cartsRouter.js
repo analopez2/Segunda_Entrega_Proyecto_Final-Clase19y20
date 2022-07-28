@@ -1,15 +1,14 @@
 import { Router } from 'express';
-import { ContenedorArchivo } from '../contenedores/ContenedorArchivo.js';
-import { config } from '../config/config.js';
 import { ERRORS_UTILS } from '../utils/utils.js';
+import { productoDao, carritoDao } from '../daos/index.js';
 
 const cartsRouter = Router();
 
-const CartApi = new ContenedorArchivo(config.FILESYSTEM_DB.carts);
-const ProductsApi = new ContenedorArchivo(config.FILESYSTEM_DB.products);
+const CartApi = carritoDao;
+const ProductsApi = productoDao;
 
 const BASE_CART = {
-  products: [],
+  productos: [],
 };
 
 cartsRouter.post('/', async (req, res) => {
@@ -50,7 +49,7 @@ cartsRouter.get('/:id/productos', async (req, res) => {
       throw { error: ERRORS_UTILS.MESSAGES.NO_CART };
     }
 
-    res.send(cart.products);
+    res.send(cart.productos);
   } catch (error) {
     res.statusCode(404).send({ error: error });
   }
@@ -73,14 +72,13 @@ cartsRouter.post('/:id/productos', async (req, res) => {
       throw { error: ERRORS_UTILS.MESSAGES.NO_PRODUCT };
     }
 
-    cart.products.push(product);
+    cart.productos.push(product);
 
     const updatedCart = await CartApi.updateById(id, cart);
 
     res.send(updatedCart);
   } catch (error) {
-    res.status(404);
-    res.send({ error });
+    res.statusCode(404).send({ error: error.message });
   }
 });
 
@@ -95,13 +93,13 @@ cartsRouter.delete('/:id/productos/:id_prod', async (req, res) => {
       throw { error: ERRORS_UTILS.MESSAGES.NO_CART };
     }
 
-    const product = cart.products.find((e) => e.id == id_prod);
+    const product = cart.productos.find((e) => e.id == id_prod);
 
     if (!product) {
       throw { error: ERRORS_UTILS.MESSAGES.NO_PRODUCT };
     }
 
-    cart.products = cart.products.filter((e) => e.id != id_prod);
+    cart.productos = cart.productos.filter((e) => e.id != id_prod);
 
     const updatedCart = await CartApi.updateById(id, cart);
 

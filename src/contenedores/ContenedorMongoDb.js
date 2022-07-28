@@ -9,7 +9,7 @@ class ContenedorMongoDb {
   async getAll() {
     try {
       const file = await this.model.find({});
-      return JSON.parse(file);
+      return file;
     } catch (error) {
       return error;
     }
@@ -17,14 +17,14 @@ class ContenedorMongoDb {
 
   async save(element) {
     try {
-      const elements = await this.getAll();
+      const elements = await this.model.find({}).pretty();
       element.id =
         elements.length === 0 ? 1 : elements[elements.length - 1].id + 1;
-
       element.timestamp = DATE_UTILS.getTimestamp();
-      await this.model.create(element);
-
-      return element;
+      const newElement = new this.model({ ...element });
+      let result = await newElement.save();
+      console.log(result);
+      return newElement;
     } catch (error) {
       return error;
     }
@@ -33,7 +33,7 @@ class ContenedorMongoDb {
   async getById(id) {
     try {
       const file = await this.model.find({ id: id });
-      return JSON.parse(file);
+      return JSON.parse(JSON.stringify(file));
     } catch (error) {
       return error;
     }
@@ -45,6 +45,7 @@ class ContenedorMongoDb {
 
       if (!element) return { error: 'Elemento no encontrado' };
 
+      newData.id = id;
       newData.timestamp = DATE_UTILS.getTimestamp();
 
       await this.model.replaceOne({ id: id }, { ...element, ...newData });

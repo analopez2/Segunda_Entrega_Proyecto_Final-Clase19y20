@@ -17,6 +17,8 @@ const config = {
       carts: '/api/carrito',
     },
   },
+  selectedDB: process.env.TIPO_DB,
+  UrlMongoDB: process.env.URL,
 };
 
 export { config };

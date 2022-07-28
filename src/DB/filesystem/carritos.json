@@ -1,7 +1,7 @@
 [
    {
       "timestamp": "13/7/2022 0:51:01",
-      "products": [
+      "productos": [
          {
             "nombre": "IPHONE 12 128GB Black",
             "descripcion": "Sistema de dos cámaras de 12 MP: ultra gran angular y gran angular",
@@ -17,12 +17,12 @@
    },
    {
       "timestamp": "10/7/2022 19:35:56",
-      "products": [],
+      "productos": [],
       "id": 2
    },
    {
       "timestamp": "10/7/2022 19:36:14",
-      "products": [],
+      "productos": [],
       "id": 3
    }
 ]
