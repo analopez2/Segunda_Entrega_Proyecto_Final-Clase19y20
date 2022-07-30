@@ -17,13 +17,9 @@ class ContenedorMongoDb {
 
   async save(element) {
     try {
-      const elements = await this.model.find({});
-      element.id =
-        elements.length === 0 ? 1 : elements[elements.length - 1].id + 1;
       element.timestamp = DATE_UTILS.getTimestamp();
       const newElement = new this.model({ ...element });
-      let result = await newElement.save();
-      console.log(result);
+      await newElement.save();
       return newElement;
     } catch (error) {
       return error;
@@ -32,7 +28,7 @@ class ContenedorMongoDb {
 
   async getById(id) {
     try {
-      const file = await this.model.findOne({ id: id });
+      const file = await this.model.findById(id);
       return file;
     } catch (error) {
       return error;
@@ -41,15 +37,14 @@ class ContenedorMongoDb {
 
   async updateById(id, newData) {
     try {
-      const element = await this.model.findOne({ id: id });
+      const element = await this.model.findById(id);
 
       if (!element) return { error: 'Elemento no encontrado' };
 
-      newData.id = id;
       newData.timestamp = DATE_UTILS.getTimestamp();
 
       let updatedElement = await this.model.findOneAndUpdate(
-        { id: id },
+        { _id: id },
         { ...newData },
         { new: true },
       );
@@ -62,7 +57,7 @@ class ContenedorMongoDb {
 
   async deleteById(id) {
     try {
-      await this.model.deleteOne({ id: id });
+      await this.model.findByIdAndDelete(id);
     } catch (error) {
       return error;
     }
