@@ -27,7 +27,8 @@ class ContenedorFirebase {
       element.timestamp = DATE_UTILS.getTimestamp();
 
       await doc.create(element);
-      return { message: 'Elemento guardado', id: doc.id };
+      const response = { id: doc.id, ...element };
+      return response;
     } catch (error) {
       return error;
     }
@@ -37,7 +38,7 @@ class ContenedorFirebase {
     try {
       const doc = this.query.doc(`${id}`);
       const element = await doc.get();
-      return element.data();
+      return { id: element.id, ...element.data() };
     } catch (error) {
       return error;
     }
