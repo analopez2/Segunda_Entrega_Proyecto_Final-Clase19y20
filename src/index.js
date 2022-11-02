@@ -12,7 +12,7 @@ app.use(config.server.routes.products, productsRouter);
 app.use(config.server.routes.carts, cartsRouter);
 
 app.get('/info', (req, res) => {
-  res.send('Ruta de prueba');
+  res.send({ status: 'success', port: config.server.PORT });
 });
 
 app.use(function (req, res) {
