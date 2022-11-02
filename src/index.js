@@ -11,16 +11,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(config.server.routes.products, productsRouter);
 app.use(config.server.routes.carts, cartsRouter);
 
+app.get('/info', (req, res) => {
+  res.send('Ruta de prueba');
+});
+
 app.use(function (req, res) {
   res.status(404);
   res.json({
     error: 404,
     description: `Ruta: ${req.url} | method ${req.method} no implementada`,
   });
-});
-
-app.get('/info', (req, res) => {
-  res.send('Ruta de prueba');
 });
 
 const server = app.listen(config.server.PORT, () => {
