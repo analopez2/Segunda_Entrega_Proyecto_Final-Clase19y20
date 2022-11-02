@@ -1,8 +1,5 @@
 import dotenv from 'dotenv';
-import mongoose from 'mongoose';
 dotenv.config();
-
-const DEV_PORT = 8080;
 
 const config = {
   FILESYSTEM_DB: {
@@ -10,7 +7,7 @@ const config = {
     carts: 'carritos',
   },
   server: {
-    PORT: process.env.PORT || DEV_PORT,
+    PORT: process.env.PORT || 8080,
     routes: {
       base: '/api',
       products: '/api/productos',
