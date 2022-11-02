@@ -19,6 +19,10 @@ app.use(function (req, res) {
   });
 });
 
+app.get('/info', (req, res) => {
+  res.send('Ruta de prueba');
+});
+
 const server = app.listen(config.server.PORT, () => {
   console.log(`Server running on port ${server.address().port}`);
 });
